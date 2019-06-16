@@ -13,7 +13,7 @@ class ToolController extends Controller
      */
     public function index()
     {
-        //
+        return "Todos";
     }
 
     /**
@@ -23,7 +23,7 @@ class ToolController extends Controller
      */
     public function create()
     {
-        //
+        return "cria novo";
     }
 
     /**
@@ -45,7 +45,7 @@ class ToolController extends Controller
      */
     public function show($id)
     {
-        //
+        return "Ferramenta de id $id";
     }
 
     /**
@@ -79,6 +79,6 @@ class ToolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "Exclui o id $id";
     }
 }
