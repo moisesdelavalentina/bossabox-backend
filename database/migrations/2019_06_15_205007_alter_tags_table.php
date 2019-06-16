@@ -15,7 +15,7 @@ class AlterTagsTable extends Migration
     {
         Schema::table('tags', function (Blueprint $table) {          
             $table->unsignedInteger('tool_id');
-            $table->foreign('tool_id')->references('id')->on('tools');
+            $table->foreign('tool_id')->references('id')->on('tools')->onDelete('cascade');;
         });
 
     }
