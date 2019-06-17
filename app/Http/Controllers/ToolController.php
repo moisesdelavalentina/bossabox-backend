@@ -19,17 +19,16 @@ class ToolController extends Controller
     public function index(Request $request)
     {
         $parameters = $request->all();
-        if(isset($parameters['tag'])){
+        if (isset($parameters['tag'])) {
             $tag = $parameters['tag'];
             return ToolResource::collection(
                 Tool::whereHas('tags', function ($query) use ($tag) {
                     $query->where('label', 'like', $tag);
                 })->get()
             );
-           
-        }else{
+        } else {
             return ToolResource::collection(Tool::all());
-        }   
+        }
     }
 
 
@@ -78,14 +77,8 @@ class ToolController extends Controller
 
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+    /*
+     
+     
      */
-    public function show($id)
-    {
-        return new ToolResource(Tool::find($id));
-    }
 }
