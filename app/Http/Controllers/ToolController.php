@@ -43,7 +43,6 @@ class ToolController extends Controller
     public function create(Request $request)
     {
         $dados = $request->all();
-
         $tool = new Tool();
         $tool->fill($dados);
         $tool->save();
@@ -53,13 +52,8 @@ class ToolController extends Controller
                 return ['label' => $tag];
             }, $dados['tags'])
         );
-
         return new ToolResource($tool);
     }
-
-
-
-
 
     /**
      * Remove the specified resource from storage.
@@ -68,17 +62,8 @@ class ToolController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        Tool::destroy($id);
-        return;
+    {   
+            Tool::destroy($id);
+            return '{}';    
     }
-
-
-
-
-
-    /*
-     
-     
-     */
 }
