@@ -52,7 +52,13 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
         ],
-        "install-drafter": "Hmaus\\Drafter\\Installer::installDrafter"
+        "install-drafter": "Hmaus\\Drafter\\Installer::installDrafter",
+        "post-install-cmd": [
+            "@install-drafter"
+        ],
+        "post-update-cmd": [
+            "@install-drafter"
+        ]
     },
     "config": {
         "preferred-install": "dist",

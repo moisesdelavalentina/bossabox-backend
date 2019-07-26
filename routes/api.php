@@ -19,8 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/tools', 'ToolController@index');
 
-Route::get('tools/{id}', 'ToolController@show');
-
 Route::post('/tools', 'ToolController@create');
 
 Route::delete('/tools/{id}', 'ToolController@destroy');

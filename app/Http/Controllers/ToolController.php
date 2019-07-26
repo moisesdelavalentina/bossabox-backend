@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tool;
 use App\Http\Resources\ToolResource;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class ToolController extends Controller
 {
@@ -64,6 +65,6 @@ class ToolController extends Controller
     public function destroy($id)
     {   
             Tool::destroy($id);
-            return '{}';    
+            return '{}';
     }
 }

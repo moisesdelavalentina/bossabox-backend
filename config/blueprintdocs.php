@@ -19,6 +19,7 @@ return [
 
     'blueprint_file' => base_path('blueprint.apib'),
 
-    'drafter' => base_path('vendor/bin/drafter')
+    'drafter' => base_path('vendor/apiaryio/drafter/bin/drafter')
 
 ];
+///var/www/vendor/apiaryio/drafter/bin/drafter
