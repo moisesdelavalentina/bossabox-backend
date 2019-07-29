@@ -1,58 +1,123 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Bossabox Backend VUTTR
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Aplicação back-end da API VUTTR (Very Useful Tools to Remember), essa aplicação é uma parte do dessafio proposto pela Bossabox. Foi desenvolvida utilizando o Framework [laravel](https://laravel.com/).
 
-## About Laravel
+## Executando a aplicação
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Para executar a aplicação, é necessario a versão `7.2` ou superior da linguagem [PHP](https://www.php.net/downloads.php) e um banco de dados ralacional como MYSQL ou Maria db, também é nessasario instalar o [Composer](https://getcomposer.org/download/) para gerenciar as dependências do projeto. Execute o comando `git clone https://github.com/moisesdelavalentina/bossabox-backend.git` para fazer o download da aplicação, navegue a para a pasta do projeto e utilize o comando `composer install` para instalar as dependencias. Após a instalação execute `cp .env.example .env` para copiar o arquivo .env, arquivo esse que é utilizado para configurar as variaveis de ambiente. Abra o arquivo `.env` com qualquer editor de texto puro e configuare as credenciais para acessecar o banco de dados como no exemplo a seguir:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```php
+DB_CONNECTION=mysql #Banco de dados utilizado
+DB_HOST=localhost   #Endereço do banco de dados
+DB_PORT=3306        #Porta
+DB_DATABASE=default #Nome do Banco
+DB_USERNAME=root    #Nome do usúario 
+DB_PASSWORD=root    #Senha de Acesso
+```
+Após configurar o acesso ao banco, utilize o comando `php artisan migrate` para criar as tabelas.
+Utilize o comando `php artisan serve --port=3000`abra o browser e navegue para o endereço: `http://localhost:3000/api-documentation` para ter acesso a documentação da API.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## Rotas
 
-## Learning Laravel
+A API está preparada para responder nas seguintes rotas:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+* `GET /tools` : Lista de todos os itens cadastrados.
+* `POST /tools` : Cadastra um novo item.
+* `DELETE /tools/:id` : Apaga um item de acordo com o ID :id.
+* `GET /tools?tag=:busca` : Lista os itens de acordo com uma tag especificada :tag.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+## Exemplos de Requisição
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+Requisição: 
+```javascript
+GET /tools
+```
+Resposta:
+```javascript
+[
+    {
+        "title": "Laravel",
+        "link": "https://laravel.com/",
+        "description": "Framework PHP para desenvolvimento de sites e aplicações para web",
+        "tags":[
+            "php", 
+            "framework", 
+            "web", 
+            "fullsatck"
+        ]
+    }
+]
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+### POST /tools
 
-## Contributing
+Requisição:
+```javascript
+// POST /tools
+// Content-Type: application/json
+{
+    "title": "Laravel",
+    "link": "https://laravel.com/",
+    "description": "Framework PHP para desenvolvimento de sites e aplicações para web",
+    "tags":[
+        "php", 
+        "framework", 
+        "web", 
+        "fullsatck"
+    ]
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Resposta:
+```javascript
+{
+    "id":5
+    "title": "Laravel",
+    "link": "https://laravel.com/",
+    "description": "Framework PHP para desenvolvimento de sites e aplicações para web",
+    "tags":[
+        "php", 
+        "framework", 
+        "web", 
+        "fullsatck"
+    ]
+}
+```
 
-## Security Vulnerabilities
+### DELETE /tools/:id
+Requisição:
+```javascript
+DELETE /tools/5
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Resposta:
+```javascript
+// Status: 200 OK
+{}
+```
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### GET /tools?tags_like=:busca
+
+Requisição: 
+```javascript
+GET /tools?tag=framework
+```
+Resposta:
+```javascript
+[
+    {
+        "id":5
+        "title": "Laravel",
+        "link": "https://laravel.com/",
+        "description": "Framework PHP para desenvolvimento de sites e aplicações para web",
+        "tags":[
+            "php", 
+            "framework", 
+            "web", 
+            "fullsatck"
+        ]
+    }
+]
+```

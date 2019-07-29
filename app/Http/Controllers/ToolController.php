@@ -12,11 +12,7 @@ class ToolController extends Controller
 
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index(Request $request)
     {
         $parameters = $request->all();
@@ -34,13 +30,7 @@ class ToolController extends Controller
 
 
 
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create(Request $request)
     {
         $dados = $request->all();
@@ -56,15 +46,11 @@ class ToolController extends Controller
         return new ToolResource($tool);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {   
             Tool::destroy($id);
             return '{}';
     }
 }
+//https://www.loom.com/share/39b156db5b974bedaf062f6a314d5836

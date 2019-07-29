@@ -1,44 +1,42 @@
 FORMAT: 1A
 HOST: http://localhost:3000
 
-FORMAT: 1A
-
 # VUTTR
 
     Simples API para gerenciamento de ferramentas úteis para desenvolvedores.
 
-# Group Ferramentas
+# Group Tools
 
-    Rotas relacioadas a Ferramentas na API.
+    Rotas relacionadas ao gerenciamento das ferramentas na API.
 
-## Coleção Ferramentas [/tools]
+## Listar e cadastar itens [/tools]
 
-### Listar todas as Ferramentas [GET]
+### Listar todos os itens [GET]
 + Response 200 (application/json)
     + Attributes (array[ToolId])
 
-### Cadastrar uma nova Ferramenta [POST]
+### Cadastrar um novo item [POST]
 + Request (application/json)
     + Attributes (Tool)
 
 + Response 201 (application/json)
     + Attributes (ToolId)
 
-## Busca por tag [/tools?tag={tag}]
-    Permite filtar as ferramentas de acordo com uma tag especifica
+## Buscar item por tag [/tools?tag={tag}]
+    Permite filtar os itens de acordo com uma tag especifica.
 
-### Lista as Ferramentas por tag [GET]
+### Lista os itens por tag [GET]
 + Parameters
-    + tag: php (string) - Tag que será Aplidada no filtro.
+    + tag: php (string) - Sendo "tag" a tag que será aplicada no filtro.
 
 + Response 200 (application/json)
     + Attributes (array[ToolId]) 
 
-## Deletar Ferramenta [/tools/{id}]
+## Deletar um item [/tools/{id}]
 + Parameters
-    + id: 12 (number) - ID da ferramenta que será deletada
+    + id: 12 (number) - ID da ferramenta que será deletada.
 
-### Deletar [DELETE]
+### Deletar um item por ID [DELETE]
 + Response 200
 
             {}
@@ -48,7 +46,7 @@ FORMAT: 1A
 
 ## Tool (object)
 
-+ title : Laravel Framework (string) - Titulo da ferramenta
++ title : Laravel (string) - Titulo da ferramenta
 + link : https://laravel.com/ (string) - Link web da ferramenta
 + description : Framework PHP para desenvolvimento de sites e aplicações para web (string) - Descrição da ferramenta
 + tags: php , framework, web, fullstack (array[string])
