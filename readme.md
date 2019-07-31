@@ -1,21 +1,21 @@
 # Bossabox Backend VUTTR
 
-Aplicação back-end da API VUTTR (Very Useful Tools to Remember), essa aplicação é uma parte do dessafio proposto pela Bossabox. Foi desenvolvida utilizando o Framework [laravel](https://laravel.com/).
+Aplicação backend da API VUTTR (Very Useful Tools to Remember), essa aplicação é uma parte do desafio proposto pela Bossabox. Foi desenvolvida utilizando o Framework [laravel](https://laravel.com/).
 
 ## Executando a aplicação
 
-Para executar a aplicação, é necessario a versão `7.2` ou superior da linguagem [PHP](https://www.php.net/downloads.php) e um banco de dados ralacional como MYSQL ou Maria db, também é nessasario instalar o [Composer](https://getcomposer.org/download/) para gerenciar as dependências do projeto. Execute o comando `git clone https://github.com/moisesdelavalentina/bossabox-backend.git` para fazer o download da aplicação, navegue a para a pasta do projeto e utilize o comando `composer install` para instalar as dependencias. Após a instalação execute `cp .env.example .env` para copiar o arquivo .env, arquivo esse que é utilizado para configurar as variaveis de ambiente. Abra o arquivo `.env` com qualquer editor de texto puro e configuare as credenciais para acessecar o banco de dados como no exemplo a seguir:
+Para executar a aplicação, é necessário a versão `7.2` ou superior da linguagem [PHP](https://www.php.net/downloads.php) e um banco de dados relacional como MYSQL ou Maria DB, também é necessário instalar o [Composer](https://getcomposer.org/download/) para gerenciar as dependências do projeto. Execute o comando `git clone https://github.com/moisesdelavalentina/bossabox-backend.git` para fazer o download da aplicação, navegue até a pasta do projeto e utilize o comando `composer install` para instalar as dependências. Após a instalação, execute `cp .env.example .env` para copiar o arquivo .env, arquivo esse que é utilizado para configurar as variaveis de ambiente. Abra o arquivo `.env` com qualquer editor de texto puro e configure as credenciais para acessar o banco de dados, como no exemplo a seguir:
 
 ```php
 DB_CONNECTION=mysql #Banco de dados utilizado
 DB_HOST=localhost   #Endereço do banco de dados
 DB_PORT=3306        #Porta
 DB_DATABASE=default #Nome do Banco
-DB_USERNAME=root    #Nome do usúario 
+DB_USERNAME=root    #Nome do usuário 
 DB_PASSWORD=root    #Senha de Acesso
 ```
 Após configurar o acesso ao banco, utilize o comando `php artisan migrate` para criar as tabelas.
-Utilize o comando `php artisan serve --port=3000`abra o browser e navegue para o endereço: `http://localhost:3000/api-documentation` para ter acesso a documentação da API.
+Utilize o comando `php artisan serve --port=3000`, abra o browser e navegue para o endereço: `http://localhost:3000/api-documentation`, para ter acesso a documentação da API.
 
 ## Rotas
 
@@ -28,6 +28,7 @@ A API está preparada para responder nas seguintes rotas:
 
 ## Exemplos de Requisição
 
+### GET /tools
 
 Requisição: 
 ```javascript
@@ -98,7 +99,7 @@ Resposta:
 ```
 
 
-### GET /tools?tags_like=:busca
+### GET /tools?tag=:busca
 
 Requisição: 
 ```javascript
